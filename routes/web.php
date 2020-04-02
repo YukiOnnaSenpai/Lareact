@@ -15,4 +15,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome get');
+
+Route::post('/', function () {
+    return view('welcome');
+})->name('welcome post');
+
+Route::put('/', function () {
+    return view('welcome');
+})->name('welcome put');
+
+Route::patch('/', function () {
+    return view('welcome');
+})->name('welcome patch');
+
+Route::delete('/', function () {
+    return view('welcome');
+})->name('welcome delete');
