@@ -12,10 +12,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::middleware(['simple'])->group(function () {
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome get');
+    Route::get('/{age}', function () {
+        return view('welcome');
+    })->name('welcome get')->middleware('age');
 
 Route::get('/{first_name}', function () {
     return view('simple');
@@ -25,14 +26,16 @@ Route::post('/', function () {
     return view('welcome');
 })->name('welcome post');
 
-Route::put('/', function () {
-    return view('welcome');
-})->name('welcome put');
+    Route::put('/', function () {
+        return view('welcome');
+    })->name('welcome put');
 
-Route::patch('/', function () {
-    return view('welcome');
-})->name('welcome patch');
+    Route::patch('/', function () {
+        return view('welcome');
+    })->name('welcome patch');
 
-Route::delete('/', function () {
-    return view('welcome');
-})->name('welcome delete');
+    Route::delete('/', function () {
+        return view('welcome');
+    })->name('welcome delete');
+
+});
