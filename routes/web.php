@@ -30,4 +30,6 @@ Route::middleware(['simple'])->group(function () {
 
     Route::delete('/', 'HomeController@deleteWelcome')->name('welcome delete');
 
+    Route::resource('resource', 'ResourceController');
+
 });
