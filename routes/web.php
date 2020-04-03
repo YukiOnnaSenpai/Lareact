@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome get');
 
+Route::get('/{first_name}', function () {
+    return view('simple');
+})->name('simple get');
+
 Route::post('/', function () {
     return view('welcome');
 })->name('welcome post');
