@@ -16,7 +16,6 @@ class Simpleton
     public function handle($request, Closure $next)
     {
         info($request);
-        //error_log($request);
         return $next($request);
     }
 }

@@ -17,12 +17,10 @@ class AgeChecker
     {
         $age = $request->route()->parameter('age');
 
-        if ( $age > 18 &&  $age != null) {
-            return response()->view('welcome', [], 400);
-        }else {
-            return abort(403);
+        if ( !empty($age) && $age < 18 ) {
+            abort(403);
         }
 
-        return $next($request);
+        return response()->view('welcome', [], 200);
     }
 }
