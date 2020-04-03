@@ -18,24 +18,16 @@ Route::middleware(['simple'])->group(function () {
     //     return view('welcome');
     // })->name('welcome get')->middleware('age');
 
-    Route::get('/{first_name}', function ($first_name) {
-        return view('simple', ['first_name' => $first_name]);
-    })->name('simple get');
+    Route::get('/', 'HomeController@getWelcome')->name('welcome get');
 
-    Route::post('/', function () {
-        return view('welcome');
-    })->name('welcome post');
+    Route::get('/{first_name}', 'HomeController@getSimpleView')->name('simple get');
 
-    Route::put('/', function () {
-        return view('welcome');
-    })->name('welcome put');
+    Route::post('/', 'HomeController@postWelcome')->name('welcome post');
 
-    Route::patch('/', function () {
-        return view('welcome');
-    })->name('welcome patch');
+    Route::put('/', 'HomeController@putWelcome')->name('welcome put');
 
-    Route::delete('/', function () {
-        return view('welcome');
-    })->name('welcome delete');
+    Route::patch('/', 'HomeController@patchWelcome')->name('welcome patch');
+
+    Route::delete('/', 'HomeController@deleteWelcome')->name('welcome delete');
 
 });
