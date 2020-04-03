@@ -66,7 +66,7 @@
 
         <div class="content">
             <div class="title m-b-md">
-                Hello, {{request()->route()->parameter('first_name')}}!
+                Hello, {{ $first_name }}!
             </div>
         </div>
 

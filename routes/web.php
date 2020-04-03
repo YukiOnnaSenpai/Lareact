@@ -14,17 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware(['simple'])->group(function () {
 
-    Route::get('/{age}', function () {
+    // Route::get('/{age}', function () {
+    //     return view('welcome');
+    // })->name('welcome get')->middleware('age');
+
+    Route::get('/{first_name}', function ($first_name) {
+        return view('simple', ['first_name' => $first_name]);
+    })->name('simple get');
+
+    Route::post('/', function () {
         return view('welcome');
-    })->name('welcome get')->middleware('age');
-
-Route::get('/{first_name}', function () {
-    return view('simple');
-})->name('simple get');
-
-Route::post('/', function () {
-    return view('welcome');
-})->name('welcome post');
+    })->name('welcome post');
 
     Route::put('/', function () {
         return view('welcome');
