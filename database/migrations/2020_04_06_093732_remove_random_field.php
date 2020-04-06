@@ -13,7 +13,9 @@ class RemoveRandomField extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('random');
+        });
     }
 
     /**
@@ -23,6 +25,8 @@ class RemoveRandomField extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('random')->after('country');
+        });
     }
 }
