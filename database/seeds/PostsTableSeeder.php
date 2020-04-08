@@ -13,9 +13,9 @@ class PostsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('posts',50)->insert([
-            'title' => Str::random(10),
-            'content' => Str::random(10),
-        ]);
+
+        factory(App\Post::class, 50)->create()->each(function ($post) {
+            $post->users()->save(factory(App\User::class)->make());
+        });
     }
 }

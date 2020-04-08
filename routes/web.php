@@ -20,7 +20,7 @@ Route::middleware(['simple'])->group(function () {
 
     Route::get('/', 'HomeController@getWelcome')->name('welcome get');
 
-    Route::get('/{first_name}', 'HomeController@getSimpleView')->name('simple get');
+    //Route::get('/{first_name}', 'HomeController@getSimpleView')->name('simple get');
 
     Route::post('/', 'HomeController@postWelcome')->name('welcome post');
 
@@ -33,3 +33,8 @@ Route::middleware(['simple'])->group(function () {
     Route::resource('resource', 'ResourceController');
 
 });
+
+Route::get('/post', 'PostController@getAllPosts')->name('all posts');
+Route::get('/post/{id}', 'PostController@getOnePost')->name('single post');
+Route::post('/post', 'PostController@createPost')->name('create post');
+Route::delete('/post/{id}', 'PostController@deletePost')->name('delete post');

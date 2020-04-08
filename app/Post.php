@@ -6,33 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    private $title;
-    private $content;
+    protected $fillable = [
+        'title', 'content'
+    ];
 
-    public function user() 
+    public function users() 
     {
         return $this->hasOne('App\User', 'user_id');
 
-    }
-
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    public function setTitle($value)
-    {
-        $this->title = $value;
-    }
-
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    public function setContent($value)
-    {
-        $this->content = $value;
     }
 
 }

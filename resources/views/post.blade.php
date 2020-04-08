@@ -61,13 +61,20 @@
                 margin-bottom: 30px;
             }
         </style>
-    </head>
-    <body>
+</head>
+<body>
 
-        <div class="content">
-            <div class="title m-b-md">
-                Hello, {{ $first_name }}!
-            </div>
-        </div> 
+    <div>
+        <table>
+            @foreach($posts as $post)
+                <tr>
+                    <td>{{ $post->id}}</td>
+                    <td>{{ $post->title }}</td>
+                    <td>{{ $post->content }}</td>
+                </tr>
+            @endforeach
+        </table>
+    </div>
+    
 
-    </body>
+</body>

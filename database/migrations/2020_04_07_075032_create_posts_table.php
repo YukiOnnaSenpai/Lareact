@@ -22,7 +22,6 @@ class CreatePostsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
-        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -33,11 +32,6 @@ class CreatePostsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('posts');
-        Schema::table('posts', function (Blueprint $table) {
-            $table->dropForeign('posts_user_id_foreign');
-            $table->dropIndex('posts_user_id_foreign');
-            $table->dropColumn('user_id');
-        });
         
     }
 }
