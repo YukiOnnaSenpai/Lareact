@@ -33,7 +33,6 @@ Route::middleware(['simple'])->group(function () {
 
 });
 
-Route::get('/post', 'PostController@getAllPosts');
 Route::resource('/post', 'PostController');
 
 Auth::routes();

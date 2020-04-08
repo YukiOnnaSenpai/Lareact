@@ -7,11 +7,6 @@ use App\Post;
 
 class PostController extends Controller
 {
-    public function getAllPosts()
-    {
-        $posts = Post::all();
-        return view('post', ['posts' => $posts]);
-    }
 
     public function index()
     {
