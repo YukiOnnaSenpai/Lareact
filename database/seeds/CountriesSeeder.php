@@ -12,15 +12,12 @@ class CountriesSeeder extends Seeder {
      */
     public function run()
     {
-        //Seed the countries
-        $this->call('CountriesSeeder');
-        $this->command->info('Seeded the countries!');
 
         //Empty the countries table
         DB::table(\Config::get('countries.table_name'))->delete();
 
         //Get all of the countries
-        $countries = (new Countries())->getList();
+        $countries = Countries::getList();
         foreach ($countries as $countryId => $country){
             DB::table(\Config::get('countries.table_name'))->insert(array(
                 'id' => $countryId,
