@@ -15,8 +15,8 @@ class PostController extends Controller
 
     public function getOnePost($id)
     {
-        $posts = Post::findOrFail($id);
-        return view('post', ['posts' => $posts]);
+        $post = Post::findOrFail($id);
+        return view('post', ['posts' => $post]);
     }
 
     public function createPost(Request $request)
@@ -25,7 +25,6 @@ class PostController extends Controller
             'title' => $request->title,
             'content' => $request->content
         ]);
-        return response()->setStatusCode(200);
 
     }
 
