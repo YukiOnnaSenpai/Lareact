@@ -10,7 +10,7 @@ class Post extends Model
         'title', 'content'
     ];
 
-    public function users() 
+    public function user() 
     {
         return $this->hasOne('App\User', 'user_id');
 
