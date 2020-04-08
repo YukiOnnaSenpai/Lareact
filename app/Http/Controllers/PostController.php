@@ -13,10 +13,16 @@ class PostController extends Controller
         return view('post', ['posts' => $posts]);
     }
 
+    public function index()
+    {
+        $posts = Post::all();
+        return view('post', ['posts' => $posts]);
+    }
+
     public function getOnePost($id)
     {
         $post = Post::findOrFail($id);
-        return view('post', ['posts' => $post]);
+        return view('post', ['posts' => [ $post] ]);
     }
 
     public function createPost(Request $request)
