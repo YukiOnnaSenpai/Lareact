@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,6 +34,8 @@ Route::middleware(['simple'])->group(function () {
 });
 
 Route::get('/post', 'PostController@getAllPosts');
-Route::resource('/post/{id}', 'PostController');
 Route::resource('/post', 'PostController');
-Route::resource('/post/{id}', 'PostController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
