@@ -16,6 +16,7 @@
         "laravel/helpers": "^1.2",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "tymon/jwt-auth": "dev-develop",
         "webpatser/laravel-countries": "dev-master"
     },
     "require-dev": {
