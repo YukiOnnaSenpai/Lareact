@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Webpatser\Countries\Countries;
 
@@ -39,6 +41,24 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
+    {
+        return  Validator::make($data, [
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'company' => 'required|string|max:255',
+            'country' => 'required|exists:countries,id',
+        ]);
     }
 
     /**

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
 
 class RegisterFormRequest extends FormRequest
 {
@@ -25,12 +26,18 @@ class RegisterFormRequest extends FormRequest
     {
         return [
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8',
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'company' => 'required|string|max:255',
             'country' => 'required',
         ];
+        info('email done');
+        info('password done');
+        info('fist_name done');
+        info('last_name done');
+        info('company done');
+        info('country done');
     }
 
     /**

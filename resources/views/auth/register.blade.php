@@ -82,7 +82,7 @@
                             <label for="country" class="col-md-4 col-form-label text-md-right">{{ __('Country') }}</label>
 
                             <div class="col-md-6">
-                                <select class="form-control" id="selectCountry" name="country_selected" required focus>
+                                <select class="form-control" id="selectCountry" name="country" required focus>
                                     <option value="" disabled selected>Please select country</option>        
                                         @foreach($countries as $country)
                                             <option value="{{$country->id}}">{{ $country->name }}</option>
@@ -104,9 +104,4 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    function getSelectorValue( selectorObj, selector ){
-        document.querySelector( selector ).value = selectorObj.value;
-    }
-</script>
 @endsection
