@@ -32,12 +32,6 @@ class RegisterFormRequest extends FormRequest
             'company' => 'required|string|max:255',
             'country' => 'required',
         ];
-        info('email done');
-        info('password done');
-        info('fist_name done');
-        info('last_name done');
-        info('company done');
-        info('country done');
     }
 
     /**
