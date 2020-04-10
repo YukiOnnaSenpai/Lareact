@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\RegisterFormRequest;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Webpatser\Countries\Countries;
 
 class RegisterController extends Controller
@@ -64,16 +62,6 @@ class RegisterController extends Controller
     public function showRegistrationForm() {
         $countries = Countries::all();
         return response()->view('auth.register',['countries'=> $countries]);
-    }
-
-    /**
-     * Store the incoming user.
-     *
-     * @param  RegisterFormRequest  $request
-     * @return Response
-     */
-    public function validate(RegisterFormRequest $request) {
-        $request->validated();
     }
   
 }
