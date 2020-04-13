@@ -64,5 +64,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'simple' => \App\Http\Middleware\Simpleton::class,
         'age' => \App\Http\Middleware\AgeChecker::class,
+        'jwtAuth' => \App\Http\Middleware\JWTAuthentication::class,
     ];
 }

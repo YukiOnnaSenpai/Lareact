@@ -38,3 +38,6 @@ Route::resource('/post', 'PostController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/dataOpen', 'DataController@open')->name('open');
+Route::get('/dataClosed', 'DataController@closed')->name('closed')->middleware('jwtAuth');
