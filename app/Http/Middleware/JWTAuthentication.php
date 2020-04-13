@@ -19,7 +19,9 @@ class JWTAuthentication
      */
     public function handle($request, Closure $next)
     {
-        if (JWTAuth::getToken()) {
+        $user = JWTAuth::parseToken()->authenticate();
+
+        if (!empty($user)) {
            return $next($request);
         }
             return abort(401);
