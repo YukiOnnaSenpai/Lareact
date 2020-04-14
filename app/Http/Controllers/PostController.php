@@ -4,35 +4,102 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\User;
 
 class PostController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->authorizeResource(Post::class, 'post');
+    }
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $posts = Post::all();
         return view('post', ['posts' => $posts]);
     }
 
-    public function getOnePost($id)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        return Post::create([
+            'title' => $request->title,
+            'content' => $request->content
+        ]);
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
         $post = Post::findOrFail($id);
         return view('post', ['posts' => [ $post] ]);
     }
 
-    public function createPost(Request $request)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-        $post = Post::create([
-            'title' => $request->title,
-            'content' => $request->content
-        ]);
+        return $post = Post::all($id);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
 
     }
 
-    public function deletePost($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-        $post = Post::findOrFail($id)->delete();
-        return response()->setStatusCode(200);
-
+        $post = Post::find($id);
+        if($post){
+            $destroy = Post::destroy(2);
+            if ($destroy){
+                return response()->json(['message' => 'Deleted post with id: $id'], 200);
+            }else{
+                return abort(400);
+            }
+        }
     }
 }
