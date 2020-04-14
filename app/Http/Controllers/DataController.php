@@ -9,8 +9,7 @@ class DataController extends Controller
 {
     public function open() 
     {
-        //return response()->json(['message'=>'this data is open for all users']);
-        return new CustomException();
+        throw new CustomException();
     }
 
     public function closed() 

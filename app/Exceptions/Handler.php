@@ -50,12 +50,7 @@ class Handler extends ExceptionHandler
      * @throws \Throwable
      */
     public function render($request, Throwable $exception)
-    {
-        if ($exception instanceof \App\Exceptions\CustomException)
-        {
-            return response()->json(['foo' => 'bar']);
-        }
-    
+    {    
         return parent::render($request, $exception);
         
     }
