@@ -81,6 +81,11 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::findOrFail($id);
+        $user = User::all($post->user_id);
+        if ($user->can('update', $post)) {
+            //
+        }
 
     }
 
@@ -92,14 +97,16 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        if($post){
-            $destroy = Post::destroy(2);
-            if ($destroy){
+        if(empty($post)){
+            return response()->json(['message' => 'Post with given id: $id, does not exist'], 422);
+          }
+
+          $destroy = Post::destroy($id);
+
+          if ($destroy){
                 return response()->json(['message' => 'Deleted post with id: $id'], 200);
-            }else{
-                return abort(400);
-            }
-        }
+          }
+          
+          return abort(400);    
     }
 }

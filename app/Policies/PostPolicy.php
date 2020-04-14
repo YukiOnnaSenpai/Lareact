@@ -53,8 +53,11 @@ class PostPolicy
      */
     public function update(?User $user, Post $post)
     {
-        if ($user->can('update', $post)) {
-            //
+        $updatablePost = Post::where('id', '=', $post->id)->first();
+        if($updatablePost === null) {
+            return response()->json(['message' => 'The post does not exist'], 200);
+        } else{
+            return true;
         }
     }
 
