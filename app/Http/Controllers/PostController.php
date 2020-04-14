@@ -84,8 +84,11 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $user = User::all($post->user_id);
         if ($user->can('update', $post)) {
-            //
+            return response()->json(['message' => 'Post successfully updated'], 200);
+        } else {
+            return response()->json(['message' => 'You are not permitted to alter post.'], 422);
         }
+        return abort(400);
 
     }
 
@@ -107,6 +110,6 @@ class PostController extends Controller
                 return response()->json(['message' => 'Deleted post with id: $id'], 200);
           }
           
-          return abort(400);    
+        return abort(400);    
     }
 }
