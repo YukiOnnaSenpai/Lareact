@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        //$this->authorizeResource(Post::class, 'post');
+        $this->authorizeResource(Post::class, 'post');
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +31,6 @@ class PostController extends Controller
      */
     public function create()
     {
-        info('should create');
 
     }
 
@@ -43,11 +42,14 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        info($request);
-        return Post::create([
+        $post =  Post::create([
             'title' => $request->title,
             'content' => $request->content
         ]);
+
+        $post->save();
+
+        return redirect()->route('post.index')->with('info','Post added successfully');
         
     }
 
