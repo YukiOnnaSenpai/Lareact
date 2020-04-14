@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function __construct()
     {
-        $this->authorizeResource(Post::class, 'post');
+        //$this->authorizeResource(Post::class, 'post');
     }
     /**
      * Display a listing of the resource.
@@ -31,6 +31,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        info('should create');
 
     }
 
@@ -42,6 +43,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        info($request);
         return Post::create([
             'title' => $request->title,
             'content' => $request->content
@@ -84,6 +86,11 @@ class PostController extends Controller
         $post = Post::findOrFail($id);
         $user = User::all($post->user_id);
         if ($user->can('update', $post)) {
+
+            $post->title = $request->title;
+            $post->content = $request->content;
+            $post->save();
+
             return response()->json(['message' => 'Post successfully updated'], 200);
         } else {
             return response()->json(['message' => 'You are not permitted to alter post.'], 422);

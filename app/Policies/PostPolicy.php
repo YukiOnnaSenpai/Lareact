@@ -53,12 +53,7 @@ class PostPolicy
      */
     public function update(?User $user, Post $post)
     {
-        if($user->first_name === 'test' && $user->id == $post->user_id)
-        {
-            return true;
-        }else {
-            return false;
-        }
+        return $user->first_name === 'test' && $user->id == $post->user_id;
     }
 
     /**
